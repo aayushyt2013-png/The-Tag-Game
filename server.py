@@ -98,6 +98,11 @@ def build_stats(results):
 class Handler(BaseHTTPRequestHandler):
     server_version = "TagServer/1.0"
 
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+
     # -- helpers
     def _send(self, status, body, content_type):
         self.send_response(status)
@@ -157,8 +162,8 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     ap = argparse.ArgumentParser(description="TAG game server")
-    ap.add_argument("--host", default="127.0.0.1")
-    ap.add_argument("--port", type=int, default=8000)
+    ap.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
+    ap.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     args = ap.parse_args()
     httpd = ThreadingHTTPServer((args.host, args.port), Handler)
     print(f"TAG running at http://{args.host}:{args.port}  (Ctrl+C to stop)")
