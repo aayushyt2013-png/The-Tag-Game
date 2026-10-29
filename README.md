@@ -9,8 +9,7 @@ Python backend, HTML + CSS frontend (a small `game.js` drives the game loop and 
 
 Open http://127.0.0.1:8000 and press **Space**.
 The server binds to `0.0.0.0` by default and uses the `PORT` environment variable when set,
-so `python server.py` works as a Render start command. Use `--port 9000` to change the port
-or `--host 127.0.0.1` to restrict access to your local machine.
+so `python server.py` works as a Render start command. Use `--port 9000` to change the port.
 
 ## How to play
 

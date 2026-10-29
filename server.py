@@ -162,11 +162,11 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     ap = argparse.ArgumentParser(description="TAG game server")
-    ap.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
     ap.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     args = ap.parse_args()
-    httpd = ThreadingHTTPServer((args.host, args.port), Handler)
-    print(f"TAG running at http://{args.host}:{args.port}  (Ctrl+C to stop)")
+    server_address = ("0.0.0.0", args.port)
+    httpd = ThreadingHTTPServer(server_address, Handler)
+    print(f"TAG running on 0.0.0.0:{args.port}  (Ctrl+C to stop)")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
