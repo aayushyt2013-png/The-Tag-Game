@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAG - Alternate</title>
+  <link rel="stylesheet" href="tag-alt.css">
+</head>
+<body>
+  <div id="frame">
+
+    <!-- top bar, visible during a round -->
+    <header id="hud" hidden>
+      <div id="chips"></div>
+      <div id="timer"><span id="timer-num">30</span><div id="timer-bar"><i></i></div></div>
+      <div id="round-label">Round 1</div>
+    </header>
+
+    <!-- the arena: platforms and players are plain divs styled by CSS -->
+    <main id="arena" aria-label="game arena"></main>
+
+    <!-- 3-2-1 / GO -->
+    <div id="banner" hidden></div>
+
+    <!-- menu -->
+    <section id="menu" class="panel">
+      <h1>TAG<span>!</span></h1>
+      <p class="tagline">One clean tag changes everything. 2&ndash;4 players, one keyboard.</p>
+
+      <div class="row opts">
+        <div class="group">
+          <h2>Humans</h2>
+          <div class="seg" id="seg-humans" role="radiogroup"></div>
+        </div>
+        <div class="group">
+          <h2>Bots</h2>
+          <div class="seg" id="seg-bots" role="radiogroup"></div>
+        </div>
+        <div class="group" id="grp-skill">
+          <h2>Bot skill</h2>
+          <div class="seg" id="seg-skill" role="radiogroup"></div>
+        </div>
+        <div class="group">
+          <h2>Round</h2>
+          <div class="seg" id="seg-seconds" role="radiogroup"></div>
+        </div>
+      </div>
+
+      <h2>Map</h2>
+      <div id="maps" role="radiogroup"></div>
+
+      <h2>Controls</h2>
+      <div id="controls"></div>
+
+      <div class="row foot">
+        <div id="stats">Loading stats&hellip;</div>
+        <button id="start" class="big">Start <kbd>Space</kbd></button>
+      </div>
+      <p id="error" hidden></p>
+    </section>
+
+    <!-- end of round -->
+    <section id="over" class="panel" hidden>
+      <h2 id="over-title"></h2>
+      <p id="over-sub"></p>
+      <div id="standings"></div>
+      <div class="row center">
+        <button id="again" class="big">Next round <kbd>Enter</kbd></button>
+        <button id="to-menu" class="ghost">Menu <kbd>Esc</kbd></button>
+      </div>
+    </section>
+
+  </div>
+  <script src="tag-alt.js"></script>
+</body>
+</html>
