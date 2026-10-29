@@ -5,7 +5,6 @@ No third-party packages needed (Python 3.9+).
 
     python server.py                # http://127.0.0.1:8000
     python server.py --port 9000
-    python server.py --host 0.0.0.0 # let other devices on your network open it
 
 API
     GET  /api/maps     level data (platforms, pads, portals, spawns)
@@ -122,7 +121,16 @@ class Handler(BaseHTTPRequestHandler):
         # block path traversal such as /../server.py
         if not target.is_relative_to(STATIC) or not target.is_file():
             return self._json(404, {"error": "not found"})
-        ctype = mimetypes.guess_type(target.name)[0] or "application/octet-stream"
+        ctype = mimetypes.guess_type(target.name)[0]
+        if not ctype:
+            if target.suffix == ".html":
+                ctype = "text/html"
+            elif target.suffix == ".js":
+                ctype = "application/javascript"
+            elif target.suffix == ".css":
+                ctype = "text/css"
+            else:
+                ctype = "application/octet-stream"
         if ctype.startswith("text/") or ctype in ("application/javascript", "application/json"):
             ctype += "; charset=utf-8"
         self._send(200, target.read_bytes(), ctype)
