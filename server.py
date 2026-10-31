@@ -18,12 +18,12 @@ import os
 import tempfile
 import threading
 from datetime import datetime, timezone
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
+from http import Path
 from urllib.parse import urlparse
 
 import maps
-
+.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
 DATA_FILE = ROOT / "data" / "results.json"

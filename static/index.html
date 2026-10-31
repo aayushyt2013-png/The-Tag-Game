@@ -12,7 +12,7 @@
     <!-- top bar, visible during a round -->
     <header id="hud" hidden>
       <div id="chips"></div>
-      <div id="timer"><span id="timer-num">30</span><div id="timer-bar"><i></i></div></div>
+      <div id="timer"><span id="timer-num">2:00</span><div id="timer-bar"><i></i></div></div>
       <div id="round-label">Round 1</div>
     </header>
 
@@ -22,41 +22,14 @@
     <!-- 3-2-1 / GO -->
     <div id="banner" hidden></div>
 
-    <!-- menu -->
-    <section id="menu" class="panel">
-      <h1>TAG<span>!</span></h1>
-      <p class="tagline">One clean tag changes everything. 2&ndash;4 players, one keyboard.</p>
-
-      <div class="row opts">
-        <div class="group">
-          <h2>Humans</h2>
-          <div class="seg" id="seg-humans" role="radiogroup"></div>
-        </div>
-        <div class="group">
-          <h2>Bots</h2>
-          <div class="seg" id="seg-bots" role="radiogroup"></div>
-        </div>
-        <div class="group" id="grp-skill">
-          <h2>Bot skill</h2>
-          <div class="seg" id="seg-skill" role="radiogroup"></div>
-        </div>
-        <div class="group">
-          <h2>Round</h2>
-          <div class="seg" id="seg-seconds" role="radiogroup"></div>
-        </div>
-      </div>
-
-      <h2>Map</h2>
-      <div id="maps" role="radiogroup"></div>
-
-      <h2>Controls</h2>
-      <div id="controls"></div>
-
-      <div class="row foot">
-        <div id="stats">Loading stats&hellip;</div>
+    <!-- start popup: translucent red card over a live arena -->
+    <section id="menu">
+      <div class="popup">
+        <h1>TAG<span>!</span></h1>
+        <div id="controls"></div>
         <button id="start" class="big">Start <kbd>Space</kbd></button>
+        <p id="error" hidden></p>
       </div>
-      <p id="error" hidden></p>
     </section>
 
     <!-- end of round -->
@@ -69,6 +42,8 @@
         <button id="to-menu" class="ghost">Menu <kbd>Esc</kbd></button>
       </div>
     </section>
+
+    <button id="mute" type="button" aria-label="Mute sound" aria-pressed="false" title="Mute (M)">🔊</button>
 
   </div>
   <script src="game.js"></script>
